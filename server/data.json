@@ -1,0 +1,23 @@
+{
+  "items": [
+    {
+      "id": "1",
+      "type": "lost",
+      "title": "Blue Water Bottle",
+      "description": "Lost a blue water bottle near the library",
+      "location": "Library",
+      "date": "2026-10-01",
+      "status": "open"
+    },
+    {
+      "id": "2",
+      "type": "found",
+      "title": "Keys with a dog keychain",
+      "description": "Found a set of keys near the cafeteria",
+      "location": "Cafeteria",
+      "date": "2026-10-05",
+      "status": "open"
+    }
+  ],
+  "issues": []
+}
