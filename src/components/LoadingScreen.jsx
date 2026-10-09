@@ -1,47 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-
-const GlitchText = ({ children, className }) => {
-  return (
-    <div className={`relative inline-block ${className}`}>
-      <motion.span
-        className="absolute top-0 left-0 -ml-[2px] text-[#C8FF00] mix-blend-screen opacity-70"
-        animate={{
-          clipPath: [
-            "inset(20% 0 80% 0)",
-            "inset(40% 0 10% 0)",
-            "inset(80% 0 5% 0)",
-            "inset(10% 0 60% 0)",
-            "inset(0% 0 0% 0)"
-          ],
-          x: [-2, 2, -1, 3, 0]
-        }}
-        transition={{ duration: 0.2, repeat: Infinity, repeatDelay: Math.random() * 3 + 2 }}
-        aria-hidden="true"
-      >
-        {children}
-      </motion.span>
-      <motion.span
-        className="absolute top-0 left-0 ml-[2px] text-red-500 mix-blend-screen opacity-70"
-        animate={{
-          clipPath: [
-            "inset(10% 0 60% 0)",
-            "inset(80% 0 5% 0)",
-            "inset(20% 0 80% 0)",
-            "inset(40% 0 10% 0)",
-            "inset(0% 0 0% 0)"
-          ],
-          x: [2, -2, 1, -3, 0]
-        }}
-        transition={{ duration: 0.25, repeat: Infinity, repeatDelay: Math.random() * 3 + 2 }}
-        aria-hidden="true"
-      >
-        {children}
-      </motion.span>
-      <span className="relative z-10">{children}</span>
-    </div>
-  );
-};
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function LoadingScreen({ onComplete }) {
   const [stage, setStage] = useState(0);
@@ -86,7 +44,7 @@ export default function LoadingScreen({ onComplete }) {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C8FF00] opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C8FF00] shadow-[0_0_12px_#C8FF00]"></span>
           </span>
-          <GlitchText>SYSTEM: ACTIVE</GlitchText>
+          SYSTEM: ACTIVE
         </motion.div>
 
         <div className="mb-6 relative">
@@ -94,10 +52,9 @@ export default function LoadingScreen({ onComplete }) {
             initial={{ filter: "blur(10px)", y: 40, opacity: 0, scale: 0.95 }}
             animate={stage >= 1 ? { filter: "blur(0px)", y: 0, opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[60px] md:text-[96px] font-extrabold leading-[0.95] tracking-tight uppercase relative z-10"
+            className="text-[60px] md:text-[96px] font-extrabold leading-[0.95] tracking-tight uppercase relative z-10 glitch-text"
           >
-            <GlitchText>Find Items</GlitchText><br/>
-            <GlitchText>Instantly</GlitchText>
+            Find Items<br/>Instantly
           </motion.h1>
         </div>
 
@@ -130,7 +87,7 @@ export default function LoadingScreen({ onComplete }) {
           onClick={onComplete}
           className="group relative h-14 px-10 rounded-full bg-white text-black font-bold text-[14px] tracking-wide flex items-center justify-center gap-3 overflow-hidden cursor-pointer transition-shadow"
         >
-          <span className="relative z-10"><GlitchText>START LOCATING</GlitchText></span>
+          <span className="relative z-10">START LOCATING</span>
           <motion.span 
             className="relative z-10"
             initial={{ x: 0 }}
@@ -151,11 +108,11 @@ export default function LoadingScreen({ onComplete }) {
       >
         <div className="flex items-center gap-2">
           <div className="h-1.5 w-1.5 rounded-full bg-white/30"></div>
-          <GlitchText>FIND-IT CAMPUS</GlitchText>
+          FIND-IT CAMPUS
         </div>
         <div className="flex gap-6">
-          <span className="hover:text-white transition-colors cursor-pointer"><GlitchText>THE SCIENCE</GlitchText></span>
-          <span className="hover:text-white transition-colors cursor-pointer"><GlitchText>COMPARISON</GlitchText></span>
+          <span className="hover:text-white transition-colors cursor-pointer">THE SCIENCE</span>
+          <span className="hover:text-white transition-colors cursor-pointer">COMPARISON</span>
         </div>
       </motion.div>
     </motion.div>
