@@ -8,17 +8,17 @@ export default function CloudTransition({ heroRef }) {
   });
 
   // Each cloud slides in then back out
-  // Left side clouds
-  const lx1 = useTransform(scrollYProgress, [0, 0.5, 1], ['-100vw', '-10vw', '-100vw']);
-  const lx2 = useTransform(scrollYProgress, [0, 0.45, 1], ['-100vw', '5vw', '-100vw']);
-  const lx3 = useTransform(scrollYProgress, [0, 0.55, 1], ['-100vw', '-25vw', '-100vw']);
-  const lx4 = useTransform(scrollYProgress, [0, 0.5, 1], ['-100vw', '15vw', '-100vw']);
+  // Left side clouds stay near the left (max ~30vw)
+  const lx1 = useTransform(scrollYProgress, [0, 0.5, 1], ['-100vw', '-20vw', '-100vw']);
+  const lx2 = useTransform(scrollYProgress, [0, 0.45, 1], ['-100vw', '-10vw', '-100vw']);
+  const lx3 = useTransform(scrollYProgress, [0, 0.55, 1], ['-100vw', '-30vw', '-100vw']);
+  const lx4 = useTransform(scrollYProgress, [0, 0.5, 1], ['-100vw', '-15vw', '-100vw']);
 
-  // Right side clouds
-  const rx1 = useTransform(scrollYProgress, [0, 0.5, 1], ['100vw', '10vw', '100vw']);
-  const rx2 = useTransform(scrollYProgress, [0, 0.45, 1], ['100vw', '-5vw', '100vw']);
-  const rx3 = useTransform(scrollYProgress, [0, 0.55, 1], ['100vw', '25vw', '100vw']);
-  const rx4 = useTransform(scrollYProgress, [0, 0.5, 1], ['100vw', '-15vw', '100vw']);
+  // Right side clouds stay near the right (min ~70vw)
+  const rx1 = useTransform(scrollYProgress, [0, 0.5, 1], ['100vw', '20vw', '100vw']);
+  const rx2 = useTransform(scrollYProgress, [0, 0.45, 1], ['100vw', '10vw', '100vw']);
+  const rx3 = useTransform(scrollYProgress, [0, 0.55, 1], ['100vw', '30vw', '100vw']);
+  const rx4 = useTransform(scrollYProgress, [0, 0.5, 1], ['100vw', '15vw', '100vw']);
 
   // Cloud opacity — fade in, hold, fade out
   const op = useTransform(scrollYProgress, [0, 0.2, 0.7, 1], [0, 0.85, 0.85, 0]);
