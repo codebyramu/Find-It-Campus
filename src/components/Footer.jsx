@@ -36,12 +36,12 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col sm:flex-row gap-4 shrink-0"
           >
-            <button className="h-[52px] px-8 rounded-full bg-[#C8FF00] text-black font-bold text-[14px] hover:bg-white transition-colors flex items-center gap-2">
-              Request Demo <ArrowUpRight className="h-4 w-4" />
-            </button>
-            <button className="h-[52px] px-8 rounded-full border border-white/20 text-white font-semibold text-[14px] hover:bg-white/5 transition-colors">
+            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="h-[52px] px-8 rounded-full bg-[#C8FF00] text-black font-bold text-[14px] hover:bg-white hover:shadow-[0_0_30px_rgba(200,255,0,0.3)] transition-all duration-300 flex items-center gap-2 group">
+              Request Demo <ArrowUpRight className="h-4 w-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </motion.button>
+            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="h-[52px] px-8 rounded-full border border-white/20 text-white font-semibold text-[14px] hover:bg-white/10 hover:border-white/40 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] transition-all duration-300">
               Contact Sales
-            </button>
+            </motion.button>
           </motion.div>
         </div>
       </div>
@@ -71,9 +71,9 @@ export default function Footer() {
                 { icon: <Briefcase className="h-4 w-4" />, label: 'LinkedIn' },
                 { icon: <Mail className="h-4 w-4" />, label: 'Email' },
               ].map((s, i) => (
-                <button key={i} aria-label={s.label} className="h-9 w-9 rounded-xl border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all duration-300">
+                <motion.button key={i} aria-label={s.label} whileHover={{ scale: 1.1, y: -2 }} whileTap={{ scale: 0.9 }} className="h-9 w-9 rounded-xl border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/40 hover:bg-white/10 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all duration-300">
                   {s.icon}
-                </button>
+                </motion.button>
               ))}
             </div>
           </div>
@@ -85,9 +85,12 @@ export default function Footer() {
               <ul className="space-y-3">
                 {items.map((item) => (
                   <li key={item}>
-                    <a href="#" className="group flex items-center gap-1 text-[13px] text-white/50 hover:text-white transition-colors duration-300">
-                      {item}
-                      <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">→</span>
+                    <a href="#" className="group flex items-center gap-2 text-[13px] text-white/50 hover:text-white transition-all duration-300">
+                      <span className="relative">
+                        {item}
+                        <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-white/50 transition-all duration-300 group-hover:w-full" />
+                      </span>
+                      <span className="opacity-0 -translate-x-2 text-[#C8FF00] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">→</span>
                     </a>
                   </li>
                 ))}

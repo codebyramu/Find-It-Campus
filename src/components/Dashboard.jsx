@@ -85,7 +85,7 @@ export default function Dashboard() {
         </motion.div>
 
         {/* Stats row */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {stats.map((s, i) => (
             <motion.div
               key={i}
@@ -94,9 +94,10 @@ export default function Dashboard() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-50px' }}
-              className={`rounded-[24px] bg-[#0A0D14]/80 border border-white/[0.07] backdrop-blur-xl p-6 flex flex-col gap-4 group hover:border-white/20 transition-colors duration-500 border-t-2 ${s.border}`}
+              whileHover={{ y: -5, scale: 1.02 }}
+              className={`rounded-[24px] bg-[#0A0D14]/80 border border-white/[0.07] backdrop-blur-xl p-6 flex flex-col gap-4 group hover:border-white/30 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-500 border-t-2 ${s.border} cursor-pointer`}
             >
-              <div className={`h-10 w-10 rounded-2xl flex items-center justify-center ${s.bg} ${s.color}`}>
+              <div className={`h-10 w-10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ${s.bg} ${s.color}`}>
                 {s.icon}
               </div>
               <div>
@@ -111,7 +112,7 @@ export default function Dashboard() {
 
         {/* Main 2-col layout */}
         <div className="w-full h-px bg-white/5 mb-8" />
-        <div className="grid lg:grid-cols-[1fr_1fr] gap-6 mb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
 
           {/* Recent Activity */}
           <motion.div
@@ -123,9 +124,9 @@ export default function Dashboard() {
           >
             <div className="flex items-center justify-between mb-6">
               <div className="text-[11px] tracking-[0.15em] font-bold text-white/40 uppercase">Recent Activity</div>
-              <button className="text-[11px] text-[#C8FF00] font-medium flex items-center gap-1 hover:underline">
-                View All <ArrowUpRight className="h-3 w-3" />
-              </button>
+              <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="text-[11px] text-[#C8FF00] font-medium flex items-center gap-1 hover:text-white transition-colors group">
+                View All <ArrowUpRight className="h-3 w-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </motion.button>
             </div>
             <div className="flex flex-col gap-1">
               {activity.map((a, i) => (
@@ -135,9 +136,10 @@ export default function Dashboard() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08, duration: 0.5 }}
-                  className="flex items-center gap-4 p-3 rounded-2xl hover:bg-white/[0.03] transition-colors group cursor-pointer"
+                  whileHover={{ scale: 1.02, x: 4 }}
+                  className="flex items-center gap-4 p-3 rounded-2xl hover:bg-white/[0.06] hover:shadow-[0_4px_20px_rgba(0,0,0,0.2)] transition-all duration-300 group cursor-pointer"
                 >
-                  <div className="h-9 w-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-white/60 group-hover:text-white transition-colors">
+                  <div className="h-9 w-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-white/60 group-hover:text-[#C8FF00] group-hover:border-[#C8FF00]/30 transition-colors duration-300">
                     {a.icon}
                   </div>
                   <div className="flex-1 min-w-0">
@@ -262,10 +264,10 @@ export default function Dashboard() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-30px' }}
-              whileHover={{ y: -6, transition: { duration: 0.3 } }}
-              className={`rounded-[24px] bg-[#0A0D14]/80 border border-white/[0.07] backdrop-blur-xl p-6 hover:border-white/20 transition-all duration-500 cursor-pointer group ${card.hoverGlow}`}
+              whileHover={{ y: -8, scale: 1.01, transition: { duration: 0.3 } }}
+              className={`rounded-[24px] bg-[#0A0D14]/80 border border-white/[0.07] backdrop-blur-xl p-6 hover:border-white/30 hover:bg-[#0A0D14] transition-all duration-500 cursor-pointer group ${card.hoverGlow}`}
             >
-              <div className={`h-12 w-12 rounded-2xl ${card.bg} ${card.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500`}>
+              <div className={`h-12 w-12 rounded-2xl ${card.bg} ${card.color} flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500`}>
                 {card.icon}
               </div>
               <div className="text-[10px] tracking-[0.18em] font-bold text-white/30 mb-2">{card.tag}</div>

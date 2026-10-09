@@ -60,7 +60,7 @@ export default function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="absolute bottom-10 left-6 lg:left-12 z-10 w-full max-w-[560px]"
+        className="absolute bottom-10 left-6 right-6 lg:right-auto lg:left-12 z-10 max-w-[560px]"
       >
         {/* Tagline badge */}
         <motion.div variants={itemVariants} className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md px-3 py-1.5 text-[11px] font-medium tracking-wide text-white/80 mb-5 w-fit">

@@ -20,8 +20,11 @@ export default function Cursor() {
     };
     
     const handleMouseOver = (e) => {
-      if (e.target.tagName.toLowerCase() === 'button' || e.target.tagName.toLowerCase() === 'a' || e.target.closest('button') || e.target.closest('a')) {
-        setIsHovered(true);
+      const target = e.target;
+      if (target && target instanceof Element) {
+        if (target.tagName.toLowerCase() === 'button' || target.tagName.toLowerCase() === 'a' || target.closest('button') || target.closest('a')) {
+          setIsHovered(true);
+        }
       }
     };
     const handleMouseOut = () => {

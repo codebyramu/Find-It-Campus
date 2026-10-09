@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'sonner';
 
@@ -9,23 +9,43 @@ export default function ReportModal({ isOpen, onClose }) {
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
 
+  useEffect(() => {
+    if (isOpen) {
+      setDesc('');
+      setTime('');
+      setDontRemember(false);
+      setSending(false);
+      setSent(false);
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    let t1, t2;
+    if (sending) {
+      t1 = setTimeout(() => {
+        setSending(false);
+        setSent(true);
+        t2 = setTimeout(() => {
+          setSent(false);
+          setDesc('');
+          setTime('');
+          setDontRemember(false);
+          onClose();
+        }, 1000);
+      }, 600);
+    }
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, [sending, onClose]);
+
   const handleSubmit = () => {
     if (!desc.trim()) {
       toast.error("Please describe the issue first.");
       return;
     }
     setSending(true);
-    setTimeout(() => {
-      setSending(false);
-      setSent(true);
-      setTimeout(() => {
-        setSent(false);
-        setDesc('');
-        setTime('');
-        setDontRemember(false);
-        onClose();
-      }, 1000);
-    }, 600);
   };
 
   return (
@@ -69,7 +89,10 @@ export default function ReportModal({ isOpen, onClose }) {
                 <input 
                   type="checkbox" 
                   checked={dontRemember}
-                  onChange={(e) => setDontRemember(e.target.checked)}
+                  onChange={(e) => {
+                    setDontRemember(e.target.checked);
+                    if (e.target.checked) setTime('');
+                  }}
                   className="accent-[#C8FF00] rounded bg-white/10 border-white/20 focus:ring-2 focus:ring-[#C8FF00]/50 focus:outline-none"
                 /> 
                 I don't remember

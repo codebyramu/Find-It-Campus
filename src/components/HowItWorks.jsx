@@ -64,39 +64,42 @@ export default function HowItWorks() {
   return (
     <section id="how" className="mx-auto max-w-[1280px] px-5 md:px-8 py-12 md:py-20 relative z-10">
       <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
-        <div className="lg:sticky lg:top-[88px]">
+        <div className="lg:sticky lg:top-[120px]">
           <motion.div 
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
           >
             <div className="text-[11px] tracking-[0.2em] font-bold text-[#C8FF00] mb-4">THE PROBLEM • THE SOLUTION</div>
           <h2 className="text-[36px] md:text-[56px] font-bold leading-[0.95] tracking-tight">
-            From WhatsApp chaos to <span className="text-white/40">Campus Recovery OS.</span>
+            From WhatsApp chaos to <br className="hidden md:block"/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C8FF00] to-emerald-400">Campus Recovery OS.</span>
           </h2>
-          <p className="mt-5 text-[14.5px] leading-[1.7] text-white/60">
+          <p className="mt-5 text-[14.5px] leading-[1.7] text-white/60 max-w-md">
             <span className="text-white font-semibold">FIND-IT CAMPUS</span> is an AI-powered, intelligent Lost & Found ecosystem designed specifically for educational institutions.<br /><br />
             The problem is simple: <span className="text-white">A student loses something. Another student finds it. But there is no intelligent system connecting them safely and reliably.</span><br /><br />
             Today, students depend on WhatsApp groups, classmates, security guards, HODs, or word of mouth. We transform this fragmented process into a smart, verified, trackable and data-driven campus recovery network.
           </p>
-          <div className="mt-6 flex gap-2">
+          <div className="mt-8 flex flex-wrap gap-2">
             {['AI Matching', 'Geo-tagged', 'Verified Handover'].map((badge, i) => (
-              <span key={i} className="text-[11px] px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60">{badge}</span>
+              <span key={i} className="text-[11px] font-medium tracking-wide px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/80 backdrop-blur-md hover:bg-white/10 transition-colors">
+                {badge}
+              </span>
             ))}
           </div>
         </motion.div>
         </div>
         
-        <div className="space-y-4 relative pl-6">
-          <div className="absolute left-0 top-8 bottom-8 w-px bg-white/5 z-0" />
+        <div className="space-y-4 relative pl-6 md:pl-8 mt-12 lg:mt-0">
+          <div className="absolute left-0 md:left-2 top-8 bottom-8 w-px bg-gradient-to-b from-white/10 via-white/5 to-transparent z-0" />
           {steps.map((step, index) => (
             <motion.div 
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
               className="group w-full text-left rounded-[24px] border border-white/5 bg-[#05060A]/80 backdrop-blur-xl p-6 flex gap-5 transition-all duration-500 hover:border-white/20 hover:bg-white/[0.02] relative"
             >
               <div className="absolute -left-6 top-0 bottom-0 w-px bg-transparent group-hover:bg-[#C8FF00] transition-colors duration-500" />

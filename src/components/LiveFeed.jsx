@@ -114,6 +114,7 @@ const feedData = [
 
 export default function LiveFeed() {
   const [filter, setFilter] = useState('All');
+  const [categoryFilter, setCategoryFilter] = useState('All');
   
   return (
     <section id="feed" className="mx-auto max-w-[1280px] px-5 md:px-8 py-12 md:py-24 overflow-hidden relative z-10">
@@ -128,20 +129,22 @@ export default function LiveFeed() {
           <h2 className="text-[28px] md:text-[42px] font-bold tracking-tight leading-[0.95]">Live Recovery Feed</h2>
           <p className="text-[13px] md:text-[14px] text-white/50 mt-3 font-medium">Real campus items • AI sorted • Verified custody</p>
         </div>
-        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-          <div className="relative">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 w-full md:w-auto mt-4 md:mt-0">
+          <div className="relative flex-1 md:flex-none">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/30" />
             <input 
               placeholder="Search AirPods, ID card, bottle..." 
-              className="h-11 w-[180px] md:w-[320px] max-w-[55vw] rounded-full bg-[#0A0D18]/80 backdrop-blur-xl border border-white/10 pl-9 pr-4 text-[13px] outline-none placeholder:text-white/40 focus:border-[#C8FF00]/40 focus:bg-white/[0.04] transition-colors" 
+              className="h-11 w-full md:w-[320px] rounded-full bg-[#0A0D18]/80 backdrop-blur-xl border border-white/10 pl-9 pr-4 text-[13px] outline-none placeholder:text-white/40 focus:border-[#C8FF00]/40 focus:bg-white/[0.04] transition-colors" 
             />
           </div>
-          <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="h-11 w-11 rounded-full bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/10 flex items-center justify-center shrink-0 transition-colors">
-            <Filter className="h-4 w-4 text-white/70" />
-          </motion.button>
-          <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="h-11 px-5 rounded-full bg-[#C8FF00] text-black font-semibold text-[13px] hover:bg-[#d4ff33] flex items-center justify-center shrink-0 transition-colors shadow-[0_0_20px_rgba(200,255,0,0.2)]">
-            Report Lost Item
-          </motion.button>
+          <div className="flex gap-2 sm:gap-3 shrink-0">
+            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="h-11 w-11 rounded-full bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/10 flex items-center justify-center shrink-0 transition-colors">
+              <Filter className="h-4 w-4 text-white/70" />
+            </motion.button>
+            <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="h-11 px-5 rounded-full bg-[#C8FF00] text-black font-semibold text-[13px] hover:bg-[#d4ff33] flex items-center justify-center shrink-0 transition-colors shadow-[0_0_20px_rgba(200,255,0,0.2)]">
+              Report Lost Item
+            </motion.button>
+          </div>
         </div>
       </motion.div>
       
@@ -164,10 +167,11 @@ export default function LiveFeed() {
           ))}
         </div>
         <div className="flex gap-2 overflow-x-auto scrollbar-hide w-full md:w-auto -mx-5 px-5 md:mx-0 md:px-0 pb-1">
-          {['All', 'Electronics', 'ID Cards', 'Books', 'Bottles', 'Keys', 'Apparel'].map((cat, i) => (
+          {['All', 'Electronics', 'ID Cards', 'Books', 'Bottles', 'Keys', 'Apparel'].map((cat) => (
             <button 
               key={cat}
-              className={`h-8 px-3 rounded-full border text-[11px] font-medium whitespace-nowrap shrink-0 cursor-pointer transition-colors ${i === 0 ? 'bg-[#C8FF00] text-black border-[#C8FF00]' : 'bg-[#05060A]/60 border-white/10 text-white/60 hover:text-white hover:border-white/30 hover:bg-white/5'}`}
+              onClick={() => setCategoryFilter(cat)}
+              className={`h-8 px-3 rounded-full border text-[11px] font-medium whitespace-nowrap shrink-0 cursor-pointer transition-colors ${categoryFilter === cat ? 'bg-[#C8FF00] text-black border-[#C8FF00]' : 'bg-[#05060A]/60 border-white/10 text-white/60 hover:text-white hover:border-white/30 hover:bg-white/5'}`}
             >
               {cat}
             </button>
@@ -184,7 +188,10 @@ export default function LiveFeed() {
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
       >
         <AnimatePresence>
-          {feedData.filter(item => filter === 'All' || item.type === filter.toUpperCase()).map((item, i) => (
+          {feedData.filter(item => 
+            (filter === 'All' || item.type === filter.toUpperCase()) &&
+            (categoryFilter === 'All' || item.category === categoryFilter)
+          ).map((item, i) => (
             <motion.button
               layout
               initial={{ opacity: 0, scale: 0.9 }}
