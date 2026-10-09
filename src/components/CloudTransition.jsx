@@ -32,56 +32,53 @@ export default function CloudTransition({ heroRef }) {
 
       {/* Big fluffy puff */}
       <motion.div
-        style={{ x: lx1, opacity: op, bottom: '20%', left: 0 }}
+        style={{ x: lx1, opacity: op, bottom: '-10%', left: 0 }}
         className="absolute"
       >
         <div style={{
-          width: 700, height: 300,
+          width: '80vw', height: '60vh',
           borderRadius: '50% 60% 50% 60%',
-          background: 'radial-gradient(ellipse 60% 50% at 60% 50%, rgba(220,225,235,0.55) 0%, rgba(200,210,225,0.25) 50%, transparent 100%)',
-          filter: 'blur(28px)',
+          background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(220,230,250,0.8) 0%, rgba(200,210,230,0.4) 60%, transparent 100%)',
+          filter: 'blur(35px)',
         }} />
       </motion.div>
 
       {/* Medium wisp above */}
       <motion.div
-        style={{ x: lx2, opacity: op }}
+        style={{ x: lx2, opacity: op, bottom: '10%', left: '-10%' }}
         className="absolute"
       >
         <div style={{
-          width: 520, height: 200,
+          width: '60vw', height: '40vh',
           borderRadius: '60% 40% 70% 30%',
-          background: 'radial-gradient(ellipse 55% 45% at 55% 50%, rgba(210,218,230,0.45) 0%, rgba(190,205,220,0.2) 55%, transparent 100%)',
-          filter: 'blur(36px)',
-          marginTop: '12vh',
+          background: 'radial-gradient(ellipse 55% 45% at 50% 50%, rgba(210,220,240,0.7) 0%, rgba(190,205,225,0.3) 60%, transparent 100%)',
+          filter: 'blur(45px)',
         }} />
       </motion.div>
 
       {/* Thin wisp lower */}
       <motion.div
-        style={{ x: lx3, opacity: op }}
+        style={{ x: lx3, opacity: op, bottom: '-5%', left: '10%' }}
         className="absolute"
       >
         <div style={{
-          width: 600, height: 160,
+          width: '70vw', height: '35vh',
           borderRadius: '40% 60% 40% 60%',
-          background: 'radial-gradient(ellipse 65% 40% at 50% 60%, rgba(200,212,228,0.4) 0%, transparent 100%)',
-          filter: 'blur(48px)',
-          marginTop: '32vh',
+          background: 'radial-gradient(ellipse 65% 40% at 50% 50%, rgba(230,240,255,0.6) 0%, transparent 100%)',
+          filter: 'blur(55px)',
         }} />
       </motion.div>
 
       {/* Tiny floating puff */}
       <motion.div
-        style={{ x: lx4, opacity: op }}
+        style={{ x: lx4, opacity: op, bottom: '25%', left: '5%' }}
         className="absolute"
       >
         <div style={{
-          width: 380, height: 140,
+          width: '50vw', height: '30vh',
           borderRadius: '55% 45% 60% 40%',
-          background: 'radial-gradient(ellipse at 50% 50%, rgba(215,222,235,0.38) 0%, transparent 100%)',
-          filter: 'blur(32px)',
-          marginTop: '6vh',
+          background: 'radial-gradient(ellipse at 50% 50%, rgba(215,225,245,0.5) 0%, transparent 100%)',
+          filter: 'blur(40px)',
         }} />
       </motion.div>
 
@@ -89,57 +86,53 @@ export default function CloudTransition({ heroRef }) {
 
       {/* Big fluffy puff */}
       <motion.div
-        style={{ x: rx1, opacity: op }}
-        className="absolute right-0"
+        style={{ x: rx1, opacity: op, bottom: '-10%', right: 0 }}
+        className="absolute"
       >
         <div style={{
-          width: 700, height: 300,
+          width: '80vw', height: '60vh',
           borderRadius: '60% 50% 60% 50%',
-          background: 'radial-gradient(ellipse 60% 50% at 40% 50%, rgba(220,225,235,0.55) 0%, rgba(200,210,225,0.25) 50%, transparent 100%)',
-          filter: 'blur(28px)',
-          marginTop: '15vh',
+          background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(220,230,250,0.8) 0%, rgba(200,210,230,0.4) 60%, transparent 100%)',
+          filter: 'blur(35px)',
         }} />
       </motion.div>
 
       {/* Medium wisp */}
       <motion.div
-        style={{ x: rx2, opacity: op }}
-        className="absolute right-0"
+        style={{ x: rx2, opacity: op, bottom: '5%', right: '-5%' }}
+        className="absolute"
       >
         <div style={{
-          width: 520, height: 200,
+          width: '60vw', height: '40vh',
           borderRadius: '40% 60% 30% 70%',
-          background: 'radial-gradient(ellipse 55% 45% at 45% 50%, rgba(210,218,230,0.45) 0%, rgba(190,205,220,0.2) 55%, transparent 100%)',
-          filter: 'blur(36px)',
-          marginTop: '5vh',
+          background: 'radial-gradient(ellipse 55% 45% at 50% 50%, rgba(210,220,240,0.7) 0%, rgba(190,205,225,0.3) 60%, transparent 100%)',
+          filter: 'blur(45px)',
         }} />
       </motion.div>
 
       {/* Thin wisp lower */}
       <motion.div
-        style={{ x: rx3, opacity: op }}
-        className="absolute right-0"
+        style={{ x: rx3, opacity: op, bottom: '-5%', right: '10%' }}
+        className="absolute"
       >
         <div style={{
-          width: 600, height: 160,
+          width: '70vw', height: '35vh',
           borderRadius: '60% 40% 60% 40%',
-          background: 'radial-gradient(ellipse 65% 40% at 50% 40%, rgba(200,212,228,0.4) 0%, transparent 100%)',
-          filter: 'blur(48px)',
-          marginTop: '28vh',
+          background: 'radial-gradient(ellipse 65% 40% at 50% 50%, rgba(230,240,255,0.6) 0%, transparent 100%)',
+          filter: 'blur(55px)',
         }} />
       </motion.div>
 
       {/* Tiny floating puff */}
       <motion.div
-        style={{ x: rx4, opacity: op }}
-        className="absolute right-0"
+        style={{ x: rx4, opacity: op, bottom: '20%', right: '5%' }}
+        className="absolute"
       >
         <div style={{
-          width: 380, height: 140,
+          width: '50vw', height: '30vh',
           borderRadius: '45% 55% 40% 60%',
-          background: 'radial-gradient(ellipse at 50% 50%, rgba(215,222,235,0.38) 0%, transparent 100%)',
-          filter: 'blur(32px)',
-          marginTop: '20vh',
+          background: 'radial-gradient(ellipse at 50% 50%, rgba(215,225,245,0.5) 0%, transparent 100%)',
+          filter: 'blur(40px)',
         }} />
       </motion.div>
     </div>

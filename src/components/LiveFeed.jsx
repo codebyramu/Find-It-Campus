@@ -28,7 +28,7 @@ const feedData = [
     category: 'ID Cards',
     desc: 'Blue lanyard, ID no. 21CS... Photo slightly faded. Urgent needed for exam entry tomorrow.',
     status: 'open',
-    image: 'https://images.unsplash.com/photo-1594968973184-9040a5ac79e0?q=80&w=400&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop',
   },
   {
     id: 3,
@@ -193,55 +193,57 @@ export default function LiveFeed() {
               transition={{ duration: 0.3, delay: i * 0.05 }}
               whileHover={{ y: -5 }}
               key={item.id}
-              className="text-left group rounded-[24px] bg-[#05060A]/90 border border-white/5 hover:border-white/20 hover:shadow-[0_-2px_0_0_rgba(200,255,0,0.4),0_20px_40px_rgba(0,0,0,0.4)] transition-all duration-500 overflow-hidden shadow-2xl relative"
+              className="text-left group rounded-[24px] bg-[#05060A] border border-white/10 hover:border-white/30 hover:shadow-[0_-2px_0_0_rgba(200,255,0,0.4),0_20px_40px_rgba(0,0,0,0.4)] transition-all duration-500 overflow-hidden shadow-2xl relative min-h-[300px] flex flex-col justify-end"
             >
-              <div className={`h-[110px] ${item.bg} relative p-5 overflow-hidden`}>
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#05060A]/90 z-0"></div>
-                <div className="relative z-10 flex justify-between items-start">
-                  <div className={`text-[10px] tracking-widest font-bold px-3 py-1.5 rounded-full border ${item.type === 'FOUND' ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : 'bg-red-500/10 text-red-400 border-red-500/20'}`}>
+              {item.image && (
+                <img 
+                  src={item.image} 
+                  alt={item.title} 
+                  className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-40 transition-opacity duration-500" 
+                />
+              )}
+              {/* Overlays */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#05060A] via-[#05060A]/80 to-transparent z-0"></div>
+              
+              <div className="relative z-10 p-5 w-full">
+                <div className="flex justify-between items-start absolute top-5 left-5 right-5">
+                  <div className={`text-[10px] tracking-widest font-bold px-3 py-1.5 rounded-full border backdrop-blur-md ${item.type === 'FOUND' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' : 'bg-red-500/20 text-red-400 border-red-500/30'}`}>
                     {item.type}
                   </div>
-                  <div className="text-[10px] px-2 py-1 rounded-full bg-black/30 border border-white/10 text-white/60">
+                  <div className="text-[10px] px-2 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white/80">
                     {item.time}
                   </div>
                 </div>
-                <div className="absolute -right-2 -bottom-6 text-[64px] opacity-20 group-hover:opacity-30 transition select-none">
-                  {item.icon}
-                </div>
+
+                <div className="mt-[70px]"></div>
+
                 {item.match && (
-                  <div className="absolute left-4 bottom-3 flex items-center gap-2">
-                    <div className="h-8 w-8 rounded-xl bg-white text-black flex items-center justify-center">
-                      <Sparkles className="h-4 w-4" />
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="h-7 w-7 rounded-lg bg-black/50 backdrop-blur-md border border-[#C8FF00]/20 text-[#C8FF00] flex items-center justify-center">
+                      <Sparkles className="h-3 w-3" />
                     </div>
                     <div className="text-[10px] font-bold px-2 py-1 rounded-full bg-[#C8FF00] text-black">
                       AI {item.match}
                     </div>
                   </div>
                 )}
-              </div>
-              <div className="p-4">
-                <div className="flex gap-3">
-                  <div className="flex-1 min-w-0">
-                    <div className="font-bold text-[14px] leading-tight truncate">{item.title}</div>
-                    <div className="mt-1 flex items-center gap-1.5 text-[11px] text-white/50">
-                      <MapPin className="h-3 w-3 shrink-0" />
-                      <span className="truncate">{item.location} • {item.category}</span>
-                    </div>
-                  </div>
-                  {item.image && (
-                    <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 border border-white/10">
-                      <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
-                    </div>
-                  )}
+                {!item.match && <div className="mb-3 h-7 w-7 hidden"></div>}
+
+                <div className="font-bold text-[16px] leading-tight text-white group-hover:text-[#C8FF00] transition-colors">{item.title}</div>
+                <div className="mt-1 flex items-center gap-1.5 text-[11px] text-white/60">
+                  <MapPin className="h-3 w-3 shrink-0" />
+                  <span className="truncate">{item.location} • {item.category}</span>
                 </div>
-                <div className="mt-3 text-[12px] leading-[1.5] text-white/60 line-clamp-2">
+                
+                <div className="mt-3 text-[12px] leading-[1.6] text-white/70 line-clamp-2">
                   {item.desc}
                 </div>
-                <div className="mt-3 flex items-center justify-between">
-                  <span className={`text-[10px] px-2 py-1 rounded-full border ${item.status === 'ready' ? 'bg-blue-500/10 border-blue-400/20 text-blue-300' : item.status === 'open' ? 'bg-white/5 border-white/10 text-white/50' : 'bg-white/5 border-white/10 text-white/50'}`}>
+                
+                <div className="mt-4 flex items-center justify-between border-t border-white/10 pt-3">
+                  <span className={`text-[10px] px-2 py-1 rounded-full border backdrop-blur-md ${item.status === 'ready' ? 'bg-blue-500/20 border-blue-400/30 text-blue-300' : 'bg-white/10 border-white/20 text-white/60'}`}>
                     {item.status}
                   </span>
-                  <span className="text-[11px] text-white/40 flex items-center gap-1 group-hover:text-white transition">
+                  <span className="text-[11px] font-bold text-white/60 flex items-center gap-1 group-hover:text-white group-hover:gap-2 transition-all">
                     View <ArrowUpRight className="h-3 w-3" />
                   </span>
                 </div>
