@@ -38,10 +38,10 @@ export default function LoadingScreen({ onComplete }) {
           initial={{ scale: 0.9, opacity: 0, y: -20 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 200, damping: 20 }}
-          className="inline-flex items-center gap-2 rounded-full border border-[#C8FF00]/30 bg-[#C8FF00]/10 px-4 py-1.5 text-[11px] font-bold tracking-widest text-[#C8FF00] mb-8"
+          className="inline-flex items-center gap-2 rounded-full border border-[#C8FF00]/30 bg-[#C8FF00]/10 px-4 py-1.5 text-[11px] font-bold tracking-widest text-[#C8FF00] mb-8 glitch-text"
         >
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C8FF00] opacity-75"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C8FF00] opacity-75" style={{ animationDuration: '0.8s' }}></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C8FF00] shadow-[0_0_12px_#C8FF00]"></span>
           </span>
           SYSTEM: ACTIVE
@@ -52,7 +52,8 @@ export default function LoadingScreen({ onComplete }) {
             initial={{ filter: "blur(10px)", y: 40, opacity: 0, scale: 0.95 }}
             animate={stage >= 1 ? { filter: "blur(0px)", y: 0, opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[60px] md:text-[96px] font-extrabold leading-[0.95] tracking-tight uppercase relative z-10 glitch-text"
+            className="text-[60px] md:text-[96px] font-extrabold leading-[0.95] tracking-tight uppercase relative z-10 glitch"
+            data-text="FIND ITEMS INSTANTLY"
           >
             Find Items<br/>Instantly
           </motion.h1>
