@@ -33,12 +33,12 @@ function App() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <Navbar />
+            <Navbar onReportClick={() => setIsModalOpen(true)} />
             <main>
-              <Hero />
+              <Hero onReportClick={() => setIsModalOpen(true)} />
               <HowItWorks />
               <Dashboard />
-              <LiveFeed />
+              <LiveFeed onReportClick={() => setIsModalOpen(true)} />
             </main>
             <Footer />
             <ReportModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

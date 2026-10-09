@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Compass, Plus } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function Navbar() {
+export default function Navbar({ onReportClick }) {
   const [visible, setVisible] = useState(true);
   const [lastY, setLastY] = useState(0);
   const [scrolled, setScrolled] = useState(false);
@@ -51,11 +51,11 @@ export default function Navbar() {
             >
               <span className="absolute inset-0 bg-[#C8FF00] translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-out" />
               <span className="relative z-10 flex items-center gap-1.5 transition-colors duration-300">
-                <Plus className="h-4 w-4" /> Report Found
+                <Plus className="h-4 w-4" /> Report Item
               </span>
             </motion.button>
           </div>
-          <motion.button
+          <motion.button onClick={onReportClick}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="md:hidden h-9 px-4 rounded-full bg-[#C8FF00] text-black text-[13px] font-bold shrink-0 cursor-pointer flex items-center gap-1.5 shadow-[0_0_15px_rgba(200,255,0,0.15)] hover:shadow-[0_0_20px_rgba(200,255,0,0.3)] transition-shadow duration-300"

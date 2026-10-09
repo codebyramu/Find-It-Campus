@@ -65,13 +65,13 @@ export default function ReportModal({ isOpen, onClose }) {
             onClick={(e) => e.stopPropagation()}
             className="bg-[#121525] border border-white/10 rounded-2xl p-6 w-full max-w-md shadow-2xl relative overflow-hidden"
           >
-            <h2 className="text-[20px] font-bold text-white mb-2">Spotted Something?</h2>
-            <p className="text-[13px] text-white/60 mb-5">Send a message directly to the finder or report a problem.</p>
+            <h2 className="text-[20px] font-bold text-white mb-2">Report Lost or Found Item</h2>
+            <p className="text-[13px] text-white/60 mb-5">Provide details about the item you lost or found so we can help match it.</p>
             
             <textarea 
               value={desc}
               onChange={(e) => setDesc(e.target.value)}
-              placeholder="Describe what you spotted or the issue..."
+              placeholder="Describe the item in detail (color, brand, distinguishing marks)..."
               className="w-full bg-white/[0.03] border border-white/10 rounded-xl p-3 text-[13px] text-white outline-none focus:border-[#C8FF00]/40 transition-colors resize-none h-[100px] mb-4"
             />
             
@@ -111,7 +111,7 @@ export default function ReportModal({ isOpen, onClose }) {
                 disabled={sending || sent}
                 className={`px-5 py-2.5 rounded-xl text-[13px] font-bold transition-all cursor-pointer ${sent ? 'bg-emerald-400 text-black' : 'bg-[#C8FF00] text-black hover:brightness-110'} disabled:opacity-70`}
               >
-                {sent ? "Sent!" : sending ? "Sending..." : "Send Message"}
+                {sent ? "Sent!" : sending ? "Sending..." : "Submit Report"}
               </button>
             </div>
           </motion.div>

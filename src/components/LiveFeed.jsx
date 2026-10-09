@@ -4,115 +4,64 @@ import { Search, Filter, MapPin, ArrowUpRight, Headphones, Badge as BadgeIcon, D
 
 const feedData = [
   {
-    id: 1,
-    type: 'FOUND',
-    time: '4m ago',
-    icon: <Headphones className="w-20 h-20" />,
-    bg: 'bg-gradient-to-br from-violet-500/20 to-blue-500/20',
-    title: 'AirPods Pro 2nd Gen',
-    location: 'Library 2F',
-    category: 'Electronics',
+    id: 1, type: 'FOUND', time: '4m ago', match: '94%', title: 'AirPods Pro 2nd Gen',
+    location: 'Library 2F', category: 'Electronics',
     desc: 'White case with small scratch on lid, found near charging station. Left earbud at 80%.',
     status: 'ready',
-    match: '94%',
     image: 'https://images.unsplash.com/photo-1606220838315-056192d5e927?q=80&w=400&auto=format&fit=crop',
   },
   {
-    id: 2,
-    type: 'LOST',
-    time: '12m ago',
-    icon: <BadgeIcon className="w-20 h-20" />,
-    bg: 'bg-gradient-to-br from-emerald-500/20 to-teal-500/20',
-    title: 'NITK ID Card + Lanyard',
-    location: 'Canteen Block',
-    category: 'ID Cards',
+    id: 2, type: 'LOST', time: '12m ago', title: 'NITK ID Card + Lanyard',
+    location: 'Canteen Block', category: 'ID Cards',
     desc: 'Blue lanyard, ID no. 21CS... Photo slightly faded. Urgent needed for exam entry tomorrow.',
     status: 'open',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1633464129147-777bdcc97c1d?q=80&w=400&auto=format&fit=crop',
   },
   {
-    id: 3,
-    type: 'FOUND',
-    time: '27m ago',
-    icon: <Coffee className="w-20 h-20" />,
-    bg: 'bg-gradient-to-br from-orange-500/20 to-red-500/20',
-    title: 'HydroFlask Black 1L',
-    location: 'Sports Complex',
-    category: 'Bottles',
+    id: 3, type: 'FOUND', time: '27m ago', match: '76%', title: 'HydroFlask Black 1L',
+    location: 'Sports Complex', category: 'Bottles',
     desc: 'Black metal bottle with NITK sticker, few dents. Full of water when found.',
     status: 'open',
-    match: '76%',
     image: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?q=80&w=400&auto=format&fit=crop',
   },
   {
-    id: 4,
-    type: 'LOST',
-    time: '1h ago',
-    icon: <Book className="w-20 h-20" />,
-    bg: 'bg-gradient-to-br from-blue-500/20 to-cyan-500/20',
-    title: 'Data Structures Textbook',
-    location: 'Block A - Lab 204',
-    category: 'Books',
+    id: 4, type: 'LOST', time: '1h ago', title: 'Data Structures Textbook',
+    location: 'Block A - Lab 204', category: 'Books',
     desc: "CLRS 3rd edition, name written on first page 'Vikram', highlighted chapter 12.",
     status: 'verifying',
     image: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=400&auto=format&fit=crop',
   },
   {
-    id: 5,
-    type: 'FOUND',
-    time: '2h ago',
-    icon: <Key className="w-20 h-20" />,
-    bg: 'bg-gradient-to-br from-yellow-500/20 to-amber-500/20',
-    title: 'Bike Keys - KTM',
-    location: 'Parking Lot',
-    category: 'Keys',
+    id: 5, type: 'FOUND', time: '2h ago', match: '88%', title: 'Bike Keys - KTM',
+    location: 'Parking Lot', category: 'Keys',
     desc: '2 keys with KTM keychain + small Ganesh idol. Found on ground near slot 42.',
     status: 'ready',
-    match: '88%',
     image: 'https://images.unsplash.com/photo-1582139329536-e7284fece509?q=80&w=400&auto=format&fit=crop',
   },
   {
-    id: 6,
-    type: 'LOST',
-    time: '3h ago',
-    icon: <Shirt className="w-20 h-20" />,
-    bg: 'bg-gradient-to-br from-zinc-500/20 to-neutral-500/20',
-    title: 'Grey Hoodie - Nike',
-    location: 'Auditorium',
-    category: 'Apparel',
+    id: 6, type: 'LOST', time: '3h ago', title: 'Grey Hoodie - Nike',
+    location: 'Auditorium', category: 'Apparel',
     desc: 'Medium size, small coffee stain on cuff. Left after fest rehearsal.',
     status: 'open',
     image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=400&auto=format&fit=crop',
   },
   {
-    id: 7,
-    type: 'FOUND',
-    time: '5h ago',
-    icon: <Calculator className="w-20 h-20" />,
-    bg: 'bg-gradient-to-br from-indigo-500/20 to-violet-500/20',
-    title: 'Scientific Calculator FX-991EX',
-    location: 'Block C - Room 301',
-    category: 'Electronics',
+    id: 7, type: 'FOUND', time: '5h ago', title: 'Scientific Calculator FX-991EX',
+    location: 'Block C - Room 301', category: 'Electronics',
     desc: 'Found under the last desk. No cover, scratches on back.',
     status: 'open',
     image: 'https://images.unsplash.com/photo-1587145820266-a5951ee6f620?q=80&w=400&auto=format&fit=crop',
   },
   {
-    id: 8,
-    type: 'LOST',
-    time: '1d ago',
-    icon: <Glasses className="w-20 h-20" />,
-    bg: 'bg-gradient-to-br from-pink-500/20 to-rose-500/20',
-    title: 'Reading Glasses - Lenskart',
-    location: 'Main Gate',
-    category: 'Accessories',
+    id: 8, type: 'LOST', time: '1d ago', title: 'Reading Glasses - Lenskart',
+    location: 'Main Gate', category: 'Accessories',
     desc: 'Black frame, blue light filter lenses. Lost near the security check.',
     status: 'closed',
     image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=400&auto=format&fit=crop',
   }
 ];
 
-export default function LiveFeed() {
+export default function LiveFeed({ onReportClick }) {
   const [filter, setFilter] = useState('All');
   const [categoryFilter, setCategoryFilter] = useState('All');
   
@@ -141,7 +90,7 @@ export default function LiveFeed() {
             <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="h-11 w-11 rounded-full bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/10 flex items-center justify-center shrink-0 transition-colors">
               <Filter className="h-4 w-4 text-white/70" />
             </motion.button>
-            <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="h-11 px-5 rounded-full bg-[#C8FF00] text-black font-semibold text-[13px] hover:bg-[#d4ff33] flex items-center justify-center shrink-0 transition-colors shadow-[0_0_20px_rgba(200,255,0,0.2)]">
+            <motion.button onClick={onReportClick} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="h-11 px-5 rounded-full bg-[#C8FF00] text-black font-semibold text-[13px] hover:bg-[#d4ff33] flex items-center justify-center shrink-0 transition-colors shadow-[0_0_20px_rgba(200,255,0,0.2)]">
               Report Lost Item
             </motion.button>
           </div>

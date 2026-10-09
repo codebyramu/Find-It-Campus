@@ -15,7 +15,7 @@ function Counter({ value }) {
   return <motion.span>{rounded}</motion.span>;
 }
 
-export default function Hero() {
+export default function Hero({ onReportClick }) {
   const heroRef = useRef(null);
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -98,13 +98,13 @@ export default function Hero() {
         <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-10">
           <motion.button
             whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-            className="h-[52px] px-8 rounded-full bg-white text-black font-bold text-[14px] flex items-center gap-2 hover:bg-[#C8FF00] transition-colors cursor-pointer shadow-lg shadow-white/10"
+            className="h-[52px] px-8 rounded-full bg-white text-black font-bold text-[14px] flex items-center gap-2 hover:bg-[#C8FF00] transition-colors cursor-pointer shadow-lg shadow-white/10" onClick={onReportClick}
           >
             <AlertCircle className="h-4 w-4" /> I Lost Something
-          </motion.button>
+           onClick={onReportClick}></motion.button>
           <motion.button
             whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-            className="h-[52px] px-8 rounded-full bg-black/20 backdrop-blur-md border border-white/30 text-white font-semibold text-[14px] flex items-center gap-2 hover:bg-white/10 transition-colors cursor-pointer"
+            className="h-[52px] px-8 rounded-full bg-black/20 backdrop-blur-md border border-white/30 text-white font-semibold text-[14px] flex items-center gap-2 hover:bg-white/10 transition-colors cursor-pointer" onClick={onReportClick}
           >
             <Sparkles className="h-4 w-4 text-[#C8FF00]" /> I Found Something
           </motion.button>
